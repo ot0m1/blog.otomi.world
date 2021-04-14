@@ -37,7 +37,7 @@ navigation:
     url: /
   - name: about
     url: /about
-  - name: archibe
+  - name: archive
     url: /archive
   - name: tags
     url: /tags
