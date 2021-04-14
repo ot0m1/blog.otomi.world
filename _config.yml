@@ -1,81 +1,82 @@
 #
-# 这个文档包含了本博客的设定信息，你可以编辑它来个性化自己的博客，
+# このドキュメントには、このブログの設定に関する情報が含まれており、
+# これらを編集して自分のブログをカスタマイズすることができます。
 #
 
-# 你的博客名称，请用你想要的博客名替换“LOFFER”，以下修改都可类似处理
-# 注意，“name: LOFFER”，冒号后面的空格不可以省略。
-# 井号后面的文字是说明文档，不会被程序读取。
+# ブログ名は、「LOFFER」をご希望のブログ名に変更してください。
+# なお、「name: LOFFER」の場合、コロンの後のスペースは省略してはいけません。
+# # マークの後のテキストは説明文書であり、プログラムでは読まれません。
+name: tmp/log
+title: tmp/log
+description: GMO Pepabo, Inc. フィヨルドブートキャンプ
 
-# 描述/签名
-name: LOFFER
-description: 一个可以fork的博客
-
-# 输入你的网站域名（如果你没有添加自己的域名，而是直接用GitHub pages分配的域名的话可以省略）
+# ウェブサイトのドメイン名を入力してください（独自のドメイン名を追加せず、GitHubページで割り当てられたドメイン名を使用する場合は、省略できます）。
 url: 
 
-# 添加你的博客的二级域名，一般来说是你的repository名
-# 如果你的博客的URL是：(http://yourusername.github.io/repository-name)
-# 那么就写成 "/repository-name"
-baseurl: /LOFFER
+# あなたのブログのセカンダリドメイン（一般的にはリポジトリ名）を追加します。
+# あなたのブログのURLが(http://yourusername.github.io/repository-name)であれば、
+# 次のように書きます。 "/repository-name"
+baseurl: /blog.otomi.world
 
 
 #
-# 下面的设定都是可选的
+# 以下の設定はすべてオプションです。
 #
 
-# 你的博客logo图片URL，建议尺寸不超过300px × 300px
+# あなたのブログのロゴ画像のURL、推奨サイズは300px×300px以内です。
 avatar: https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/logo.png
 
-# 你的favicon（出现在浏览器tab上）图片URL，建议使用较小(64px × 64px)的图片
+# あなたのファビコン（ブラウザのタブに表示される）画像のURL、小さいサイズ（64px×64px）の画像を推奨します。
 favicon: https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/favicon.png
 
 
-# 菜单中的按钮
+# メニューのボタン
 navigation:
-  - name: 首页
+  - name: top
     url: /
-  - name: 关于
+  - name: about
     url: /about
-  - name: 归档
+  - name: archibe
     url: /archive
-  - name: 标签
+  - name: tags
     url: /tags
 
-# 每页的文章数
+# 1ページあたりの記事数
 paginate: 8
 
-# 文章简介的区分标记
+# 記事のプロフィールの識別マーク
 excerpt_separator: <!-- more -->
 
-# 你的社交网络链接，它们会作为图标出现在你的网站页脚中，可选填写
+# あなたのソーシャルネットワークのリンクは、ウェブサイトのフッターにアイコンとして表示されます。
 footer-links: 
-  weibo:  #请输入你的微博个性域名 https://www.weibo.com/<thispart>
+  weibo: #Twitterのパーソナライズドドメイン名を入力してください。 https://www.weibo.com/<thispart>
   behance: # https://www.behance.net/<>
   dribbble: # https://dribbble.com/<>
   email: #youremailaddress@mail.com
   facebook: #https://www.facebook.com/<>
   flickr: #https://www.flickr.com/<>
-  github: FromEndWorld/loffer #https://github.com/<>
+  github: ot0m1 #https://github.com/<>
+  twitter: ot0m1
   instagram: #https://instagram.com/<>
   linkedin: #https://www.linkedin.com/in/<>
   pinterest: #https://www.pinterest.com/<>
-  rss: #随便填点啥RSS就能用了
+  rss: #いくつかのRSSを入力するだけで使えるようになります。
   stackoverflow: # http://stackoverflow.com/<>
   tumblr: # https://<username>.tumblr.com
   twitter: # https://www.twitter.com/<your_twitter_username> 
   youtube: # channel/<your_long_string> or user/<user-name>
 
-# 站点页脚的文字
-footer-text: Copyright (c) 2019 来自中世界
+# サイトフッターのテキスト
+footer-text: The original design was created by <a href="https://github.com/FromEndWorld/LOFFER">LOFFER</a>
 
 #
-# 评论，注意，请不要同时添加多种不同的评论区
+# コメント、注意、複数の異なるコメント欄を同時に追加しないでください。
 #
 
-# 输入Disqus shortname，即可添加评论区，请查阅文档，设置自己的disqus站点，不要继续使用我的站点loffer
-disqus: loffer #shortname
+# コメント欄を追加するにはDisqusのショートネームを入力します。ドキュメントを確認して自分のDisqusサイトを設定し、私のサイトlofferを使い続けないでください。
+disqus: #shortname
 
-# 输入Gitalk相关设定，即可添加评论区，具体请看教程
+# コメント欄を追加するには、Gitalk関連の設定を入力します。詳細はチュートリアルを参照してください。
 gitalk:
   clientID: 
   clientSecret: 
@@ -83,14 +84,14 @@ gitalk:
   owner: 
   proxy:
 
-# 输入Google Analytics web tracking code
+# Google Analytics web tracking code
 google_analytics:
 
 utteranc:
   repo: # Your github repo path, also see: https://utteranc.es
 
 #
-# !! 以下所有设置都不需要更改 !!
+# !! 以下の設定はすべて変更する必要はありません。 !!
 #
 
 permalink: /:title/
