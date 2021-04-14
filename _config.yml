@@ -10,13 +10,14 @@ name: tmp/log
 title: tmp/log
 description: GMO Pepabo, Inc. フィヨルドブートキャンプ
 
-# ウェブサイトのドメイン名を入力してください（独自のドメイン名を追加せず、GitHubページで割り当てられたドメイン名を使用する場合は、省略できます）。
-url: 
+# ウェブサイトのドメイン名を入力してください
+# （独自のドメイン名を追加せず、GitHubページで割り当てられたドメイン名を使用する場合は、省略できます）。
+url: blog.otomi.world
 
 # あなたのブログのセカンダリドメイン（一般的にはリポジトリ名）を追加します。
 # あなたのブログのURLが(http://yourusername.github.io/repository-name)であれば、
 # 次のように書きます。 "/repository-name"
-baseurl: /blog.otomi.world
+baseurl: 
 
 
 #
