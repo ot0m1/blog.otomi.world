@@ -209,7 +209,7 @@
     
     <article class="post">
       <h1>
-        <a href="/my-forst-jekyll/">ブログを Jekyll に移行してみた</a>
+        <a href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">Rails Girls Fukuoka 2ndのコーチをしました</a>
       </h1>
 
       <div clsss="meta">
@@ -219,7 +219,7 @@
         </span>
             
         <span class="date">
-          2021-04-15
+          2019-11-02
         </span>
 
         <ul class="tag">
@@ -234,12 +234,12 @@
       </div>
 
       <div class="post-excerpt">
-          <p>ブログを Jekyll に移行してみた。</p>
+          <p>11月1日＆2日で<a href="http://d.hatena.ne.jp/keyword/Rails">Rails</a> Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。</p>
 
 
           
           <p>
-            <a class="post-link" href="/my-forst-jekyll/">Read More</a>
+            <a class="post-link" href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">Read More</a>
           </p>
         </div>
     </article>  
@@ -248,7 +248,7 @@
     
     <article class="post">
       <h1>
-        <a href="/I-figured-out-why/">ここ数日プラクティスを進める手が捗らないので理由を考えた</a>
+        <a href="/I-had-completed-the-course">一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました</a>
       </h1>
 
       <div clsss="meta">
@@ -258,7 +258,7 @@
         </span>
             
         <span class="date">
-          2021-02-04
+          2019-10-09
         </span>
 
         <ul class="tag">
@@ -273,12 +273,12 @@
       </div>
 
       <div class="post-excerpt">
-          <p>相変わらず<a href="http://d.hatena.ne.jp/keyword/%A5%D5%A5%A3%A5%E8%A5%EB%A5%C9">フィヨルド</a>ブートキャンプを粛々と進めているのだが、「<a href="http://d.hatena.ne.jp/keyword/Rails">Rails</a> の <a href="http://d.hatena.ne.jp/keyword/i18n">i18n</a> を理解する」の課題に入って手が動かないな〜と感じて、なぜかを考えてみた。</p>
+          <p>このブログを始めるきっかけになった<a href="https://daimyo-college.pepabo.com/">大名エンジニアカレッジ</a>を2019/09/10に3ヶ月の講習期間を終え、修了しておりました。 色々思うことあり、うまく言葉にまとめられないのでずっと記事にできないでいた。</p>
 
 
           
           <p>
-            <a class="post-link" href="/I-figured-out-why/">Read More</a>
+            <a class="post-link" href="/I-had-completed-the-course">Read More</a>
           </p>
         </div>
     </article>  
@@ -287,7 +287,7 @@
     
     <article class="post">
       <h1>
-        <a href="/avoiding-sql-Injection/">prepared statement を利用してSQLインジェクションを回避する</a>
+        <a href="/solution-for-rails-s-not-working-with-mysql/">Ruby on Rails でデータベースを mysql で rails s できない場合の解決法</a>
       </h1>
 
       <div clsss="meta">
@@ -297,7 +297,7 @@
         </span>
             
         <span class="date">
-          2021-01-24
+          2019-08-24
         </span>
 
         <ul class="tag">
@@ -312,14 +312,12 @@
       </div>
 
       <div class="post-excerpt">
-          <p><a href="https://akkkky.hatenablog.jp/entry/2021/01/20/001614">前回の記事</a>で <a href="http://d.hatena.ne.jp/keyword/ruby">ruby</a>-pg から <a href="http://d.hatena.ne.jp/keyword/CRUD">CRUD</a> するための方法を書いたが、引数でメモの内容を受け取ってそれをクエリ文字列に結合していたので<a href="http://d.hatena.ne.jp/keyword/SQL%A5%A4%A5%F3%A5%B8%A5%A7%A5%AF%A5%B7%A5%E7%A5%F3">SQLインジェクション</a>の危険性があった。</p>
-
-<p>そのため prepared statement を利用するように変更した。</p>
+          <p><a href="https://akkkky.hatenablog.jp/entry/2019/08/22/222546">前回</a>の続き。</p>
 
 
           
           <p>
-            <a class="post-link" href="/avoiding-sql-Injection/">Read More</a>
+            <a class="post-link" href="/solution-for-rails-s-not-working-with-mysql/">Read More</a>
           </p>
         </div>
     </article>  
@@ -328,7 +326,7 @@
     
     <article class="post">
       <h1>
-        <a href="/created-web-application/">Sinatra で Webアプリケーションを作った際の気付き</a>
+        <a href="/solution-for-not-being-able-to-new-in-mysql/">Ruby on Rails でデータベースを mysql で new できない場合の解決法</a>
       </h1>
 
       <div clsss="meta">
@@ -338,7 +336,7 @@
         </span>
             
         <span class="date">
-          2021-01-23
+          2019-08-22
         </span>
 
         <ul class="tag">
@@ -353,12 +351,17 @@
       </div>
 
       <div class="post-excerpt">
-          <p><a href="https://akkkky.hatenablog.jp/entry/2021/01/16/234329">Sinatra で Webアプリケーションを作った - tmp/log</a> の続き。 レビューいただいた点を修正しての気付きなど。</p>
+          <p>データベースに <code class="language-plaintext highlighter-rouge">mysql</code> 使いたいなぁ！と思って</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rails new i\_want\_to\_use\_mysql -d mysql 
+</code></pre></div></div>
+
+<p>したら、エラーで先に進まない場合の解決法。</p>
 
 
           
           <p>
-            <a class="post-link" href="/created-web-application/">Read More</a>
+            <a class="post-link" href="/solution-for-not-being-able-to-new-in-mysql/">Read More</a>
           </p>
         </div>
     </article>  
@@ -367,7 +370,7 @@
     
     <article class="post">
       <h1>
-        <a href="/crud-with-ruby-pg/">ruby-pg で CRUD する</a>
+        <a href="/Eighth-session-of-Daimyo-Engineering-College/">大名エンジニアカレッジ8回目</a>
       </h1>
 
       <div clsss="meta">
@@ -377,7 +380,7 @@
         </span>
             
         <span class="date">
-          2021-01-20
+          2019-07-29
         </span>
 
         <ul class="tag">
@@ -392,12 +395,9 @@
       </div>
 
       <div class="post-excerpt">
-          <p><a href="http://localhost:4000/trying-to-touch-ruby-pg/">ruby-pg を触ってみる</a>の続き。</p>
-
-
-          
+          <h2 id="やったこと">やったこと</h2>
           <p>
-            <a class="post-link" href="/crud-with-ruby-pg/">Read More</a>
+            <a class="post-link" href="/Eighth-session-of-Daimyo-Engineering-College/">Read More</a>
           </p>
         </div>
     </article>  
@@ -406,7 +406,7 @@
     
     <article class="post">
       <h1>
-        <a href="/trying-to-touch-ruby-pg/">ruby-pg を触ってみる</a>
+        <a href="/Seventh-session-of-Daimyo-Engineering-College/">大名エンジニアカレッジ7回目</a>
       </h1>
 
       <div clsss="meta">
@@ -416,7 +416,7 @@
         </span>
             
         <span class="date">
-          2021-01-18
+          2019-07-17
         </span>
 
         <ul class="tag">
@@ -431,12 +431,9 @@
       </div>
 
       <div class="post-excerpt">
-          <p><a href="http://d.hatena.ne.jp/keyword/Sinatra">Sinatra</a>アプリでのデータ保存先をデータベースに変えるため、<a href="https://github.com/ged/ruby-pg">ruby-pg</a>を触ってみる。 簡単な Ruby スクリプトを書いて「書き込み」「読み取り」「編集」「削除」の一連の操作ができるようにする。</p>
-
-
-          
+          <p>えっもう7回目なの・・！？</p>
           <p>
-            <a class="post-link" href="/trying-to-touch-ruby-pg/">Read More</a>
+            <a class="post-link" href="/Seventh-session-of-Daimyo-Engineering-College/">Read More</a>
           </p>
         </div>
     </article>  
@@ -445,7 +442,7 @@
     
     <article class="post">
       <h1>
-        <a href="/built-web-application-with-sinatra/">Sinatra で Webアプリケーションを作った</a>
+        <a href="/what-is-gem/">Homebrew/rbenv/gem/Bundler ってなんじゃい</a>
       </h1>
 
       <div clsss="meta">
@@ -455,7 +452,7 @@
         </span>
             
         <span class="date">
-          2021-01-16
+          2019-07-14
         </span>
 
         <ul class="tag">
@@ -470,16 +467,25 @@
       </div>
 
       <div class="post-excerpt">
-          <p>1年以上ぶりの記事ですね。</p>
+          <p>それぞれどう違うのか説明できないですよね。 僕は説明できません。 ググってなんとなくてやっていたのでちゃんと理解したいと思います。</p>
 
-<p>去年の12月から<a href="https://bootcamp.fjord.jp">フィヨルドブートキャンプ</a>に通っており、もう1年以上経ちます。 途中半年以上全然プ<a href="http://d.hatena.ne.jp/keyword/%A5%E9%A5%AF">ラク</a>ティスをやっていないに等しいような時期があったのですが、ここ2ヶ月くらいはなんとか勉強が習慣化してきたようで連日のようにプ<a href="http://d.hatena.ne.jp/keyword/%A5%E9%A5%AF">ラク</a>ティスを進めることができている状態です。</p>
+<h2 id="ちゃんと理解するとは">ちゃんと理解するとは</h2>
 
-<p><a href="http://d.hatena.ne.jp/keyword/%A5%D5%A5%A3%A5%E8%A5%EB%A5%C9">フィヨルド</a>ブートキャンプではプ<a href="http://d.hatena.ne.jp/keyword/%A5%E9%A5%AF">ラク</a>ティスをやった日は必ず日報を書くようになっており、僕も必ず書いています。 その日報をブログにも書いて勉強の過程を公開しようしようと思いつつやれておらず、また過去にさかのぼってブログ書くのもしんどいので中途半端で唐突な始まりですが今日から本気出す。</p>
+<ul>
+  <li>
+    <p>Qiita（いつもお世話になっています）などの複次情報ではなく、原典にあたる</p>
+  </li>
+  <li>
+    <p>出典元を可能な限り明記する</p>
+  </li>
+</ul>
+
+<p>なお、各々の利用方法の解説はしません。それぞれの違い、なぜ利用するのかを明らかにすることを本記事の目的とします。</p>
 
 
           
           <p>
-            <a class="post-link" href="/built-web-application-with-sinatra/">Read More</a>
+            <a class="post-link" href="/what-is-gem/">Read More</a>
           </p>
         </div>
     </article>  
@@ -488,7 +494,7 @@
     
     <article class="post">
       <h1>
-        <a href="/I-started-living-on-huel/">Huel生活はじめました</a>
+        <a href="/Sixth-session-of-Daimyo-Engineering-College/">大名エンジニアカレッジ6回目</a>
       </h1>
 
       <div clsss="meta">
@@ -498,7 +504,7 @@
         </span>
             
         <span class="date">
-          2019-11-07
+          2019-07-10
         </span>
 
         <ul class="tag">
@@ -513,12 +519,9 @@
       </div>
 
       <div class="post-excerpt">
-          <p>常々、一人のときの食事ってめんどくさいな〜栄養は取りたいけど買いにいく手間もかけたくないし食費はなるべく抑えたいし、自炊も時間かかるしそんな楽しくないし・・・となんとかハックしたいと思っておりまして、そんなわけで<a href="https://jp.huel.com/">Huel</a>を試してみることにしました。</p>
-
-
-          
+          <h2 id="やったこと">やったこと</h2>
           <p>
-            <a class="post-link" href="/I-started-living-on-huel/">Read More</a>
+            <a class="post-link" href="/Sixth-session-of-Daimyo-Engineering-College/">Read More</a>
           </p>
         </div>
     </article>  
@@ -528,9 +531,15 @@
 
 <div class="pagination">
   
+    <span class="prev">
+      <a href="/" class="prev">
+        ← 次のページ
+      </a>
+    </span>
+  
   
     <span class="next">
-      <a href="/page2/" class="next">
+      <a href="/page3/" class="next">
         前のページ →
       </a>
     </span>

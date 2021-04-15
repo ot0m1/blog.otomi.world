@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>記事一覧 – tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
+  <title>Sinatra で Webアプリケーションを作った際の気付き – tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -9,14 +9,18 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ">
-    <meta property="og:description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ" />
+    <meta name="description" content="Sinatra で Webアプリケーションを作った - tmp/log の続き。 レビューいただいた点を修正しての気付きなど。
+
+" />
+    <meta property="og:description" content="Sinatra で Webアプリケーションを作った - tmp/log の続き。 レビューいただいた点を修正しての気付きなど。
+
+" />
     
     <meta name="author" content="tmp/log" />
 
     
-    <meta property="og:title" content="記事一覧" />
-    <meta property="twitter:title" content="記事一覧" />
+    <meta property="og:title" content="Sinatra で Webアプリケーションを作った際の気付き" />
+    <meta property="twitter:title" content="Sinatra で Webアプリケーションを作った際の気付き" />
     
   <!-- Async font loading -->
 <script>
@@ -158,349 +162,107 @@
 
     <div id="main" role="main" class="wrapper-content">
       <div class="container">
-        <article class="page">
+        <article class="posts">
+  <h1>Sinatra で Webアプリケーションを作った際の気付き</h1>
 
-  <h1>記事一覧</h1>
+  <div clsss="meta">
+    <span class="author">
+      otomi
+    </span>
+
+    <span class="date">
+      2021-01-23
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="http://localhost:4000/tags#blog">
+          blog
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 
   <div class="entry">
-    
+    <p><a href="https://akkkky.hatenablog.jp/entry/2021/01/16/234329">Sinatra で Webアプリケーションを作った - tmp/log</a> の続き。 レビューいただいた点を修正しての気付きなど。</p>
 
-<ul class="archive">
-  
-    
-      <h2>2021</h2>
-    
+<!-- more -->
 
-    <li>
-      
-      <a href="/my-forst-jekyll/">
-      
-        ブログを Jekyll に移行してみた
-      </a>
-      <time>2021-04-15</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>レビューいただいた点について修正にあたって以下の学びがあった。</p>
 
-    <li>
-      
-      <a href="/I-figured-out-why/">
-      
-        ここ数日プラクティスを進める手が捗らないので理由を考えた
-      </a>
-      <time>2021-02-04</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<h2 id="html-エスケープしたときに表示が崩れる">HTML エスケープしたときに表示が崩れる</h2>
 
-    <li>
-      
-      <a href="/avoiding-sql-Injection/">
-      
-        prepared statement を利用してSQLインジェクションを回避する
-      </a>
-      <time>2021-01-24</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>これは当初エスケープに利用している <code class="language-plaintext highlighter-rouge">Rack::Utils.escape_html</code> 側の出力に原因があると考えていた。そこでどんな処理をしているのかソースを見に行ったら、シンプルに記号を置換しているものであった。</p>
 
-    <li>
-      
-      <a href="/created-web-application/">
-      
-        Sinatra で Webアプリケーションを作った際の気付き
-      </a>
-      <time>2021-01-23</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p><a href="https://github.com/rack/rack/blob/a05f8d56f9ac4da14dddb8f312a3b43644f73397/lib/rack/utils.rb#L158">https://github.com/rack/rack/blob/a05f8d56f9ac4da14dddb8f312a3b43644f73397/lib/rack/utils.rb#L158</a></p>
 
-    <li>
-      
-      <a href="/crud-with-ruby-pg/">
-      
-        ruby-pg で CRUD する
-      </a>
-      <time>2021-01-20</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>実際のコード</p>
 
-    <li>
-      
-      <a href="/trying-to-touch-ruby-pg/">
-      
-        ruby-pg を触ってみる
-      </a>
-      <time>2021-01-18</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ESCAPE_HTML</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"&amp;"</span> <span class="o">=&gt;</span> <span class="s2">"&amp;amp;"</span><span class="p">,</span>
+    <span class="s2">"&lt;"</span> <span class="o">=&gt;</span> <span class="s2">"&amp;lt;"</span><span class="p">,</span>
+    <span class="s2">"&gt;"</span> <span class="o">=&gt;</span> <span class="s2">"&amp;gt;"</span><span class="p">,</span>
+    <span class="s2">"'"</span> <span class="o">=&gt;</span> <span class="s2">"&amp;#x27;"</span><span class="p">,</span>
+    <span class="s1">'"'</span> <span class="o">=&gt;</span> <span class="s2">"&amp;quot;"</span><span class="p">,</span>
+    <span class="s2">"/"</span> <span class="o">=&gt;</span> <span class="s2">"&amp;#x2F;"</span>
+<span class="p">}</span>
 
-    <li>
-      
-      <a href="/built-web-application-with-sinatra/">
-      
-        Sinatra で Webアプリケーションを作った
-      </a>
-      <time>2021-01-16</time>
-    </li>
-  
-    
-      
-      
-      
-        <h2>2019</h2>
-      
-    
+<span class="no">ESCAPE_HTML_PATTERN</span> <span class="o">=</span> <span class="no">Regexp</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="o">*</span><span class="no">ESCAPE_HTML</span><span class="p">.</span><span class="nf">keys</span><span class="p">)</span>
 
-    <li>
-      
-      <a href="/I-started-living-on-huel/">
-      
-        Huel生活はじめました
-      </a>
-      <time>2019-11-07</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<span class="c1"># Escape ampersands, brackets and quotes to their HTML/XML entities.</span>
+<span class="k">def</span> <span class="nf">escape_html</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="no">ESCAPE_HTML_PATTERN</span><span class="p">){</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="no">ESCAPE_HTML</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
-    <li>
-      
-      <a href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">
-      
-        Rails Girls Fukuoka 2ndのコーチをしました
-      </a>
-      <time>2019-11-02</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>なので出力される文字列が原因ではないということでもうちょっと自分の実装を追っていたら、単に<a href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%B9">エス</a>ケープした場合に文字列が長くなりすぎ、HTML の要素からはみ出てしまっているだけだった…。</p>
 
-    <li>
-      
-      <a href="/I-had-completed-the-course">
-      
-        一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました
-      </a>
-      <time>2019-10-09</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>スタイルで <code class="language-plaintext highlighter-rouge">overflow</code> を適切に設定していなかったことが原因。幸い15分くらいで原因に思い当たったので良かった。原因が <a href="http://d.hatena.ne.jp/keyword/Ruby">Ruby</a> のコード側にあると思いこんでいたらドハマリするところだった…。</p>
 
-    <li>
-      
-      <a href="/solution-for-rails-s-not-working-with-mysql/">
-      
-        Ruby on Rails でデータベースを mysql で rails s できない場合の解決法
-      </a>
-      <time>2019-08-24</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<h2 id="表示に関するコードはコントローラーに該当するファイルに書かない">表示に関するコードはコントローラーに該当するファイルに書かない</h2>
 
-    <li>
-      
-      <a href="/solution-for-not-being-able-to-new-in-mysql/">
-      
-        Ruby on Rails でデータベースを mysql で new できない場合の解決法
-      </a>
-      <time>2019-08-22</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>コントローラーに該当する処理を書いていたファイル内で、一緒に HTML タグを操作していた。 View と Model で担当を分担するため書く場所は分けた方が良い。<a href="http://d.hatena.ne.jp/keyword/MVC">MVC</a> モデルを意識した実装をする。</p>
 
-    <li>
-      
-      <a href="/Eighth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ8回目
-      </a>
-      <time>2019-07-29</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<h2 id="readme-に-ruby-の推奨バージョンを自然言語で書いていた">README に <a href="http://d.hatena.ne.jp/keyword/Ruby">Ruby</a> の推奨バージョンを<a href="http://d.hatena.ne.jp/keyword/%BC%AB%C1%B3%B8%C0%B8%EC">自然言語</a>で書いていた</h2>
 
-    <li>
-      
-      <a href="/Seventh-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ7回目
-      </a>
-      <time>2019-07-17</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p><code class="language-plaintext highlighter-rouge">.ruby-version</code> をコミットしておくとよい。 確かに推奨バージョンを書いて利用者に人力でバージョン指定してもらうより rbenv にやってもらった方が全然いい…！</p>
 
-    <li>
-      
-      <a href="/what-is-gem/">
-      
-        Homebrew/rbenv/gem/Bundler ってなんじゃい
-      </a>
-      <time>2019-07-14</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Sixth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ6回目
-      </a>
-      <time>2019-07-10</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/conversion-timing-to-symbol-class/">
-      
-        rubyのハッシュのキーにスペースが含まれている場合のエラー回避から読み解くSymbolクラスへの変換タイミング
-      </a>
-      <time>2019-07-04</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Fifth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ5回目
-      </a>
-      <time>2019-07-03</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Fourth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ4回目
-      </a>
-      <time>2019-06-26</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Third-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ3回目
-      </a>
-      <time>2019-06-19</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Second-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ二回目
-      </a>
-      <time>2019-06-13</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Daimyo-Engineering-College-has-started/">
-      
-        大名エンジニアカレッジに通ってみた
-      </a>
-      <time>2019-06-11</time>
-    </li>
-  
-</ul>
 
   </div>
+
+  
+  
+<script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="issue-term"
+        label="utteranc"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
 </article>
+
+<div class="pagination">
+  
+    <span class="prev" >
+      <a href="http://localhost:4000/crud-with-ruby-pg/">
+        ← 前のページ
+      </a>
+    </span>
+  
+  
+    <span class="next" >
+      <a href="http://localhost:4000/avoiding-sql-Injection/">
+        次のページ →
+      </a>
+    </span>
+  
+</div>
 
       </div>
     </div>

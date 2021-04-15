@@ -1,8 +1,9 @@
 ---
 layout: post
 title: ブログを Jekyll に移行してみた
-date: 2021-04-15
-Author: otomi
+# date: 2021-04-15
+date: 2021/04/15 20:54:09
+author: otomi
 tags: [blog]
 comments: false
 ---

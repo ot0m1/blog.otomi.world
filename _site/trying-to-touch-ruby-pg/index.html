@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>記事一覧 – tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
+  <title>ruby-pg を触ってみる – tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -9,14 +9,18 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ">
-    <meta property="og:description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ" />
+    <meta name="description" content="Sinatraアプリでのデータ保存先をデータベースに変えるため、ruby-pgを触ってみる。 簡単な Ruby スクリプトを書いて「書き込み」「読み取り」「編集」「削除」の一連の操作ができるようにする。
+
+" />
+    <meta property="og:description" content="Sinatraアプリでのデータ保存先をデータベースに変えるため、ruby-pgを触ってみる。 簡単な Ruby スクリプトを書いて「書き込み」「読み取り」「編集」「削除」の一連の操作ができるようにする。
+
+" />
     
     <meta name="author" content="tmp/log" />
 
     
-    <meta property="og:title" content="記事一覧" />
-    <meta property="twitter:title" content="記事一覧" />
+    <meta property="og:title" content="ruby-pg を触ってみる" />
+    <meta property="twitter:title" content="ruby-pg を触ってみる" />
     
   <!-- Async font loading -->
 <script>
@@ -158,349 +162,103 @@
 
     <div id="main" role="main" class="wrapper-content">
       <div class="container">
-        <article class="page">
+        <article class="posts">
+  <h1>ruby-pg を触ってみる</h1>
 
-  <h1>記事一覧</h1>
+  <div clsss="meta">
+    <span class="author">
+      otomi
+    </span>
+
+    <span class="date">
+      2021-01-18
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="http://localhost:4000/tags#blog">
+          blog
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 
   <div class="entry">
-    
+    <p><a href="http://d.hatena.ne.jp/keyword/Sinatra">Sinatra</a>アプリでのデータ保存先をデータベースに変えるため、<a href="https://github.com/ged/ruby-pg">ruby-pg</a>を触ってみる。 簡単な Ruby スクリプトを書いて「書き込み」「読み取り」「編集」「削除」の一連の操作ができるようにする。</p>
 
-<ul class="archive">
-  
-    
-      <h2>2021</h2>
-    
+<!-- more -->
 
-    <li>
-      
-      <a href="/my-forst-jekyll/">
-      
-        ブログを Jekyll に移行してみた
-      </a>
-      <time>2021-04-15</time>
-    </li>
-  
-    
-      
-      
-      
-    
+<p>まずはTableの作成。</p>
 
-    <li>
-      
-      <a href="/I-figured-out-why/">
-      
-        ここ数日プラクティスを進める手が捗らないので理由を考えた
-      </a>
-      <time>2021-02-04</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/avoiding-sql-Injection/">
-      
-        prepared statement を利用してSQLインジェクションを回避する
-      </a>
-      <time>2021-01-24</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/created-web-application/">
-      
-        Sinatra で Webアプリケーションを作った際の気付き
-      </a>
-      <time>2021-01-23</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/crud-with-ruby-pg/">
-      
-        ruby-pg で CRUD する
-      </a>
-      <time>2021-01-20</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/trying-to-touch-ruby-pg/">
-      
-        ruby-pg を触ってみる
-      </a>
-      <time>2021-01-18</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/built-web-application-with-sinatra/">
-      
-        Sinatra で Webアプリケーションを作った
-      </a>
-      <time>2021-01-16</time>
-    </li>
-  
-    
-      
-      
-      
-        <h2>2019</h2>
-      
-    
-
-    <li>
-      
-      <a href="/I-started-living-on-huel/">
-      
-        Huel生活はじめました
-      </a>
-      <time>2019-11-07</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">
-      
-        Rails Girls Fukuoka 2ndのコーチをしました
-      </a>
-      <time>2019-11-02</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/I-had-completed-the-course">
-      
-        一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました
-      </a>
-      <time>2019-10-09</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/solution-for-rails-s-not-working-with-mysql/">
-      
-        Ruby on Rails でデータベースを mysql で rails s できない場合の解決法
-      </a>
-      <time>2019-08-24</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/solution-for-not-being-able-to-new-in-mysql/">
-      
-        Ruby on Rails でデータベースを mysql で new できない場合の解決法
-      </a>
-      <time>2019-08-22</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Eighth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ8回目
-      </a>
-      <time>2019-07-29</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Seventh-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ7回目
-      </a>
-      <time>2019-07-17</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/what-is-gem/">
-      
-        Homebrew/rbenv/gem/Bundler ってなんじゃい
-      </a>
-      <time>2019-07-14</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Sixth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ6回目
-      </a>
-      <time>2019-07-10</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/conversion-timing-to-symbol-class/">
-      
-        rubyのハッシュのキーにスペースが含まれている場合のエラー回避から読み解くSymbolクラスへの変換タイミング
-      </a>
-      <time>2019-07-04</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Fifth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ5回目
-      </a>
-      <time>2019-07-03</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Fourth-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ4回目
-      </a>
-      <time>2019-06-26</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Third-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ3回目
-      </a>
-      <time>2019-06-19</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Second-session-of-Daimyo-Engineering-College/">
-      
-        大名エンジニアカレッジ二回目
-      </a>
-      <time>2019-06-13</time>
-    </li>
-  
-    
-      
-      
-      
-    
-
-    <li>
-      
-      <a href="/Daimyo-Engineering-College-has-started/">
-      
-        大名エンジニアカレッジに通ってみた
-      </a>
-      <time>2019-06-11</time>
-    </li>
-  
+<ul>
+  <li>Ruby側</li>
 </ul>
 
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'pg'</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="no">PG</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span> <span class="ss">dbname: </span><span class="s1">'postgres'</span> <span class="p">)</span>
+<span class="n">connection</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="s1">'CREATE TABLE sinatra_table (id INTEGER PRIMARY KEY, title TEXT NOT NULL, body TEXT)'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>PostgreSQL側</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-&gt;</span> <span class="o">%</span> <span class="n">ruby</span> <span class="n">test</span><span class="p">.</span><span class="n">rb</span> 
+<span class="o">-&gt;</span> <span class="o">%</span> <span class="n">psql</span> <span class="o">-</span><span class="n">U</span> <span class="n">aksk</span> <span class="n">postgres</span>
+<span class="n">psql</span> <span class="p">(</span><span class="mi">13</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">Type</span> <span class="nv">"help"</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span>
+
+<span class="n">postgres</span><span class="o">=#</span> <span class="err">\</span><span class="n">d</span>
+           <span class="n">List</span> <span class="k">of</span> <span class="n">relations</span>
+ <span class="k">Schema</span> <span class="o">|</span>     <span class="n">Name</span>      <span class="o">|</span> <span class="k">Type</span>  <span class="o">|</span> <span class="k">Owner</span>
+<span class="c1">--------+---------------+-------+-------</span>
+ <span class="k">public</span> <span class="o">|</span> <span class="n">sinatra_table</span> <span class="o">|</span> <span class="k">table</span> <span class="o">|</span> <span class="n">aksk</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="n">postgres</span><span class="o">=#</span>
+</code></pre></div></div>
+
+<p>Tableできた。が、これって<code class="language-plaintext highlighter-rouge">postgres</code>っていうデータベースが存在することが予め分かっているのでコネクションを張れているが、自作の<a href="http://d.hatena.ne.jp/keyword/Sinatra">Sinatra</a>のWebアプリケーションをcloneしてもらって他の人のパソコン上で動かすときはデータベース名どうやって決めればいいのだろうか？</p>
+
+<p><code class="language-plaintext highlighter-rouge">PG::Connection.new(host, port, options, tty, dbname, user, password)</code> これで任意のホストへ接続できるので、自分が契約している<a href="http://d.hatena.ne.jp/keyword/VPN">VPN</a>へコネクション張れば誰のパソコン上でも予めわかっているデータベース名で接続できるけど、そういうことじゃないよな〜…。</p>
+
+
   </div>
+
+  
+  
+<script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="issue-term"
+        label="utteranc"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
 </article>
+
+<div class="pagination">
+  
+    <span class="prev" >
+      <a href="http://localhost:4000/built-web-application-with-sinatra/">
+        ← 前のページ
+      </a>
+    </span>
+  
+  
+    <span class="next" >
+      <a href="http://localhost:4000/crud-with-ruby-pg/">
+        次のページ →
+      </a>
+    </span>
+  
+</div>
 
       </div>
     </div>
