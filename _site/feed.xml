@@ -1,8 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T01:35:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">ブログを Jekyll に移行してみた</title><link href="http://localhost:4000/my-forst-jekyll/" rel="alternate" type="text/html" title="ブログを Jekyll に移行してみた" /><published>2021-04-15T20:54:09+09:00</published><updated>2021-04-15T20:54:09+09:00</updated><id>http://localhost:4000/my-forst-jekyll</id><content type="html" xml:base="http://localhost:4000/my-forst-jekyll/">&lt;p&gt;ブログを Jekyll に移行してみた。&lt;/p&gt;
-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T02:06:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">ブログを Jekyll に移行してみた</title><link href="http://localhost:4000/my-forst-jekyll/" rel="alternate" type="text/html" title="ブログを Jekyll に移行してみた" /><published>2021-04-15T20:54:09+09:00</published><updated>2021-04-15T20:54:09+09:00</updated><id>http://localhost:4000/my-forst-jekyll</id><content type="html" xml:base="http://localhost:4000/my-forst-jekyll/">&lt;p&gt;ブログを Jekyll に移行してみた。
 &lt;!-- more --&gt;
+&lt;br /&gt;
+めちゃめちゃ苦戦しました。&lt;/p&gt;
 
-&lt;p&gt;めちゃめちゃ苦戦しました。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">ブログを Jekyll に移行してみた。</summary></entry><entry><title type="html">ここ数日プラクティスを進める手が捗らないので理由を考えた</title><link href="http://localhost:4000/I-figured-out-why/" rel="alternate" type="text/html" title="ここ数日プラクティスを進める手が捗らないので理由を考えた" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>http://localhost:4000/I-figured-out-why</id><content type="html" xml:base="http://localhost:4000/I-figured-out-why/">&lt;p&gt;相変わらず&lt;a href=&quot;http://d.hatena.ne.jp/keyword/%A5%D5%A5%A3%A5%E8%A5%EB%A5%C9&quot;&gt;フィヨルド&lt;/a&gt;ブートキャンプを粛々と進めているのだが、「&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Rails&quot;&gt;Rails&lt;/a&gt; の &lt;a href=&quot;http://d.hatena.ne.jp/keyword/i18n&quot;&gt;i18n&lt;/a&gt; を理解する」の課題に入って手が動かないな〜と感じて、なぜかを考えてみた。&lt;/p&gt;
+&lt;p&gt;今まではてなブログでやっていたブログを Jekyll に移行しました。
+移行した理由は、&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;独自ドメインでブログを運営したかった&lt;/li&gt;
+  &lt;li&gt;はてなブログだと独自ドメインを利用するために月約 1,000 円くらいのプロプランに変更しないといけなかった&lt;/li&gt;
+  &lt;li&gt;独自ドメインにするのに月約 1,000 円は高いなぁと思っていた
+    &lt;ul&gt;
+      &lt;li&gt;プロじゃないと広告が消せないのもちょっといやだった&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ずっと静的サイトジェネレータをやってみたかった&lt;/li&gt;
+  &lt;li&gt;今 Ruby を勉強しているので Ruby 製のものを使うことにした&lt;/li&gt;
+  &lt;li&gt;GitHub Pages もやってみたかった&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というもの。&lt;/p&gt;
+
+&lt;p&gt;というわけで、Jekyll でブログを作って、独自ドメインで GitHub Pages でホストすることにした。&lt;/p&gt;
+
+&lt;p&gt;GitHub Pages でサイトを作成した際のデフォルトのテーマの Jekyll のサイトなら GitHub のサイトに書かれている手順通りに進めるだけですぐできたが、その後テーマを変更しようとしたところでつまずきまくった。&lt;/p&gt;
+
+&lt;p&gt;Jekyll のテーマの変更方法は複数あるようで、最初はすぐできそうな gem 形式などをやっていたがうまくいかず。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; した後にログが流れるのでそれを見るに、変更後のテーマで必要なファイルがレンダリングできないというような内容であったが、どうやってレンダリングさせられるのかが分からなかった。&lt;/p&gt;
+
+&lt;p&gt;なので、変更したいテーマをリポジトリからフォークしてきて、そのファイルを編集するという方法で対応した。&lt;/p&gt;
+
+&lt;p&gt;フォークしたテーマにはなぜか Gemfile が存在しておらず、bundle ができないのでデフォルトテーマの Gemfile の一部をコピペして &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; してなんとか変更できた。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">ブログを Jekyll に移行してみた。</summary></entry><entry><title type="html">ここ数日プラクティスを進める手が捗らないので理由を考えた</title><link href="http://localhost:4000/I-figured-out-why/" rel="alternate" type="text/html" title="ここ数日プラクティスを進める手が捗らないので理由を考えた" /><published>2021-02-04T00:00:00+09:00</published><updated>2021-02-04T00:00:00+09:00</updated><id>http://localhost:4000/I-figured-out-why</id><content type="html" xml:base="http://localhost:4000/I-figured-out-why/">&lt;p&gt;相変わらず&lt;a href=&quot;http://d.hatena.ne.jp/keyword/%A5%D5%A5%A3%A5%E8%A5%EB%A5%C9&quot;&gt;フィヨルド&lt;/a&gt;ブートキャンプを粛々と進めているのだが、「&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Rails&quot;&gt;Rails&lt;/a&gt; の &lt;a href=&quot;http://d.hatena.ne.jp/keyword/i18n&quot;&gt;i18n&lt;/a&gt; を理解する」の課題に入って手が動かないな〜と感じて、なぜかを考えてみた。&lt;/p&gt;
 
 &lt;!-- more --&gt;
 &lt;ul&gt;
