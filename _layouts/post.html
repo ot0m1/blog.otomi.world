@@ -17,7 +17,8 @@ layout: default
     <ul class="tag">
       {% for tag in page.tags %}
       <li>
-        <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+        <!-- <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}"> -->
+          <a href="tags#{{ tag }}">
           {{ tag }}
         </a>
       </li>
@@ -37,14 +38,16 @@ layout: default
 <div class="pagination">
   {% if page.previous.url %}
     <span class="prev" >
-      <a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}">
+      <!-- <a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}"> -->
+        <a href="{{ page.previous.url }}"></a>
         ← 前のページ
       </a>
     </span>
   {% endif %}
   {% if page.next.url %}
     <span class="next" >
-      <a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}">
+      <!-- <a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}"> -->
+      <a href="{{ page.next.url }}"></a>
         次のページ →
       </a>
     </span>
