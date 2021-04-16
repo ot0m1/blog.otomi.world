@@ -15,13 +15,13 @@ comments: false
 
 はてなブログは以下の手順で記事をエクスポートできる。
 
-https://help.hatenablog.com/entry/export
+[記事データをエクスポート（バックアップ）する](https://help.hatenablog.com/entry/export)
 
 エクスポートされた記事は Movable Type 形式のブログデータらしいのだが、jeykll はそのままだと記事として読み込めないぽいので、各記事毎にファイルを分割するスクリプトを Ruby で書いた。
 
 コードは GitHub に置いている。
 
-https://github.com/ot0m1/hatena-blog-to-jekyll
+[https://github.com/ot0m1/hatena-blog-to-jekyll](https://github.com/ot0m1/hatena-blog-to-jekyll)
 
 1つのテキストファイルを記事毎のマークダウンファイルに分割して、そのまま jeykll の _posts ディレクトリに放り込めるようにした。
 
