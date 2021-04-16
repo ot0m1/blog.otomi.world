@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
+  <title>はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた – tmp/log – GMO Pepabo, Inc. フィヨルドブートキャンプ</title>
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -9,11 +9,22 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
     
-    <meta name="description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ">
-    <meta property="og:description" content="GMO Pepabo, Inc. フィヨルドブートキャンプ" />
+    <meta name="description" content="昨日書いたように、はてなブログから jeykll に移行した。
+
+はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。
+
+" />
+    <meta property="og:description" content="昨日書いたように、はてなブログから jeykll に移行した。
+
+はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。
+
+" />
     
     <meta name="author" content="tmp/log" />
 
+    
+    <meta property="og:title" content="はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた" />
+    <meta property="twitter:title" content="はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた" />
     
   <!-- Async font loading -->
 <script>
@@ -155,399 +166,118 @@
 
     <div id="main" role="main" class="wrapper-content">
       <div class="container">
-        
+        <article class="posts">
+  <h1>はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた</h1>
 
-<div class="posts">
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/I-started-living-on-huel/">Huel生活はじめました</a>
-      </h1>
+  <div clsss="meta">
+    <span class="author">
+      otomi
+    </span>
 
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-11-07
-        </span>
+    <span class="date">
+      2021-04-16
+    </span>
 
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
+    <ul class="tag">
+      
+      <li>
+        <!-- <a href="http://localhost:4000/tags#blog"> -->
+        <a href="https://blog.otomi.world/tags#blog">
+          blog
+        </a>
+      </li>
+      
+      <li>
+        <!-- <a href="http://localhost:4000/tags#ruby"> -->
+        <a href="https://blog.otomi.world/tags#ruby">
+          ruby
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 
-      <div class="post-excerpt">
-          <p>常々、一人のときの食事ってめんどくさいな〜栄養は取りたいけど買いにいく手間もかけたくないし食費はなるべく抑えたいし、自炊も時間かかるしそんな楽しくないし・・・となんとかハックしたいと思っておりまして、そんなわけで<a href="https://jp.huel.com/">Huel</a>を試してみることにしました。</p>
+  <div class="entry">
+    <p><a href="https://blog.otomi.world/my-forst-jekyll/">昨日</a>書いたように、はてなブログから jeykll に移行した。</p>
 
+<p>はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。</p>
 
-          
-          <p>
-            <a class="post-link" href="/I-started-living-on-huel/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">Rails Girls Fukuoka 2ndのコーチをしました</a>
-      </h1>
+<!-- more -->
 
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-11-02
-        </span>
+<p>はてなブログは以下の手順で記事をエクスポートできる。</p>
 
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
+<p>https://help.hatenablog.com/entry/export</p>
 
-      <div class="post-excerpt">
-          <p>11月1日＆2日で<a href="http://d.hatena.ne.jp/keyword/Rails">Rails</a> Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。</p>
+<p>エクスポートされた記事は Movable Type 形式のブログデータらしいのだが、jeykll はそのままだと記事として読み込めないぽいので、各記事毎にファイルを分割するスクリプトを Ruby で書いた。</p>
 
+<p>コードは GitHub に置いている。</p>
 
-          
-          <p>
-            <a class="post-link" href="/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/I-had-completed-the-course">一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました</a>
-      </h1>
+<p>https://github.com/ot0m1/hatena-blog-to-jekyll</p>
 
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-10-09
-        </span>
+<p>1つのテキストファイルを記事毎のマークダウンファイルに分割して、そのまま jeykll の _posts ディレクトリに放り込めるようにした。</p>
 
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <p>このブログを始めるきっかけになった<a href="https://daimyo-college.pepabo.com/">大名エンジニアカレッジ</a>を2019/09/10に3ヶ月の講習期間を終え、修了しておりました。 色々思うことあり、うまく言葉にまとめられないのでずっと記事にできないでいた。</p>
-
-
-          
-          <p>
-            <a class="post-link" href="/I-had-completed-the-course">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/solution-for-rails-s-not-working-with-mysql/">Ruby on Rails でデータベースを mysql で rails s できない場合の解決法</a>
-      </h1>
-
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-08-24
-        </span>
-
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <p><a href="https://akkkky.hatenablog.jp/entry/2019/08/22/222546">前回</a>の続き。</p>
-
-
-          
-          <p>
-            <a class="post-link" href="/solution-for-rails-s-not-working-with-mysql/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/solution-for-not-being-able-to-new-in-mysql/">Ruby on Rails でデータベースを mysql で new できない場合の解決法</a>
-      </h1>
-
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-08-22
-        </span>
-
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <p>データベースに <code class="language-plaintext highlighter-rouge">mysql</code> 使いたいなぁ！と思って</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rails new i\_want\_to\_use\_mysql -d mysql 
-</code></pre></div></div>
-
-<p>したら、エラーで先に進まない場合の解決法。</p>
-
-
-          
-          <p>
-            <a class="post-link" href="/solution-for-not-being-able-to-new-in-mysql/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/Eighth-session-of-Daimyo-Engineering-College/">大名エンジニアカレッジ8回目</a>
-      </h1>
-
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-07-29
-        </span>
-
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <h2 id="やったこと">やったこと</h2>
-          <p>
-            <a class="post-link" href="/Eighth-session-of-Daimyo-Engineering-College/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/Seventh-session-of-Daimyo-Engineering-College/">大名エンジニアカレッジ7回目</a>
-      </h1>
-
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-07-17
-        </span>
-
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <p>えっもう7回目なの・・！？</p>
-          <p>
-            <a class="post-link" href="/Seventh-session-of-Daimyo-Engineering-College/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
-  
-    
-    <article class="post">
-      <h1>
-        <a href="/what-is-gem/">Homebrew/rbenv/gem/Bundler ってなんじゃい</a>
-      </h1>
-
-      <div clsss="meta">
-        
-        <span class="author">
-          otomi
-        </span>
-            
-        <span class="date">
-          2019-07-14
-        </span>
-
-        <ul class="tag">
-          
-          <li>
-            <a href="http://localhost:4000/tags#blog">
-              blog
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="post-excerpt">
-          <p>それぞれどう違うのか説明できないですよね。 僕は説明できません。 ググってなんとなくてやっていたのでちゃんと理解したいと思います。</p>
-
-<h2 id="ちゃんと理解するとは">ちゃんと理解するとは</h2>
-
+<h1 id="やったこと">やったこと</h1>
 <ul>
-  <li>
-    <p>Qiita（いつもお世話になっています）などの複次情報ではなく、原典にあたる</p>
+  <li>1つのテキストファイルを記事毎のマークダウンファイルに分割</li>
+  <li>記事を分割して配列に格納
+    <ul>
+      <li>正規表現で split</li>
+    </ul>
   </li>
-  <li>
-    <p>出典元を可能な限り明記する</p>
+  <li>分割した記事のメタ情報と本文をそれぞれヘッダーとボディとして hash で持つ</li>
+  <li>ヘッダーを jeykll の形式に変換</li>
+  <li>ボディの html の構文をマークダウン形式に変換
+    <ul>
+      <li><a href="https://github.com/xijo/reverse_markdown">reverse_markdown</a> ライブラリを利用させてもらった</li>
+    </ul>
+  </li>
+  <li>記事毎にマークダウンファイルとして書き出す</li>
+</ul>
+
+<h1 id="やってみて">やってみて</h1>
+<ul>
+  <li>jeykll で記事として扱ってもらえるファイルの内容が不明だったので、変換の最適化ができなかった
+    <ul>
+      <li>書き出したファイルを _posts ディレクトリに放り込んでも、タイトルがうまく反映しなかったりページングできなかったりした</li>
+      <li>jeykll 側のパーマリンクの設定などで対応できそうだったが、そこまで調べる元気がなく結局手作業での修正が発生した</li>
+    </ul>
+  </li>
+  <li>記事毎にマークダウンファイルを作るのはできたので、手作業は発生はしたが大幅に移行する時間は短縮できた
+    <ul>
+      <li>自分は20記事くらいだったが、100記事超えるとかなってくるともっと時間短縮が効いてくると思う</li>
+    </ul>
   </li>
 </ul>
 
-<p>なお、各々の利用方法の解説はしません。それぞれの違い、なぜ利用するのかを明らかにすることを本記事の目的とします。</p>
+<h1 id="まとめ">まとめ</h1>
+<p>現実に起こっている課題を Ruby で解決することができたのがなによりの収穫でした。</p>
 
+  </div>
 
-          
-          <p>
-            <a class="post-link" href="/what-is-gem/">Read More</a>
-          </p>
-        </div>
-    </article>  
-    
   
-</div>
+  
+<script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="issue-term"
+        label="utteranc"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+  
+</article>
 
 <div class="pagination">
   
-    <span class="prev">
-      <a href="/" class="prev">
-        ← 次のページ
+    <span class="prev" >
+      <!-- <a href="http://localhost:4000/my-forst-jekyll/"> -->
+      <a href="/my-forst-jekyll/">
+        ← 前のページ
       </a>
     </span>
   
-  
-    <span class="next">
-      <a href="/page3/" class="next">
-        前のページ →
-      </a>
-    </span>
   
 </div>
 

@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T02:26:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">ブログを Jekyll に移行してみた</title><link href="http://localhost:4000/my-forst-jekyll/" rel="alternate" type="text/html" title="ブログを Jekyll に移行してみた" /><published>2021-04-15T20:54:09+09:00</published><updated>2021-04-15T20:54:09+09:00</updated><id>http://localhost:4000/my-forst-jekyll</id><content type="html" xml:base="http://localhost:4000/my-forst-jekyll/">&lt;p&gt;ブログを Jekyll に移行してみた。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T22:30:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた</title><link href="http://localhost:4000/created-a-migration-script/" rel="alternate" type="text/html" title="はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた" /><published>2021-04-16T00:00:00+09:00</published><updated>2021-04-16T00:00:00+09:00</updated><id>http://localhost:4000/created-a-migration-script</id><content type="html" xml:base="http://localhost:4000/created-a-migration-script/">&lt;p&gt;&lt;a href=&quot;https://blog.otomi.world/my-forst-jekyll/&quot;&gt;昨日&lt;/a&gt;書いたように、はてなブログから jeykll に移行した。&lt;/p&gt;
+
+&lt;p&gt;はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;はてなブログは以下の手順で記事をエクスポートできる。&lt;/p&gt;
+
+&lt;p&gt;https://help.hatenablog.com/entry/export&lt;/p&gt;
+
+&lt;p&gt;エクスポートされた記事は Movable Type 形式のブログデータらしいのだが、jeykll はそのままだと記事として読み込めないぽいので、各記事毎にファイルを分割するスクリプトを Ruby で書いた。&lt;/p&gt;
+
+&lt;p&gt;コードは GitHub に置いている。&lt;/p&gt;
+
+&lt;p&gt;https://github.com/ot0m1/hatena-blog-to-jekyll&lt;/p&gt;
+
+&lt;p&gt;1つのテキストファイルを記事毎のマークダウンファイルに分割して、そのまま jeykll の _posts ディレクトリに放り込めるようにした。&lt;/p&gt;
+
+&lt;h1 id=&quot;やったこと&quot;&gt;やったこと&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;1つのテキストファイルを記事毎のマークダウンファイルに分割&lt;/li&gt;
+  &lt;li&gt;記事を分割して配列に格納
+    &lt;ul&gt;
+      &lt;li&gt;正規表現で split&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;分割した記事のメタ情報と本文をそれぞれヘッダーとボディとして hash で持つ&lt;/li&gt;
+  &lt;li&gt;ヘッダーを jeykll の形式に変換&lt;/li&gt;
+  &lt;li&gt;ボディの html の構文をマークダウン形式に変換
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/xijo/reverse_markdown&quot;&gt;reverse_markdown&lt;/a&gt; ライブラリを利用させてもらった&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;記事毎にマークダウンファイルとして書き出す&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;やってみて&quot;&gt;やってみて&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;jeykll で記事として扱ってもらえるファイルの内容が不明だったので、変換の最適化ができなかった
+    &lt;ul&gt;
+      &lt;li&gt;書き出したファイルを _posts ディレクトリに放り込んでも、タイトルがうまく反映しなかったりページングできなかったりした&lt;/li&gt;
+      &lt;li&gt;jeykll 側のパーマリンクの設定などで対応できそうだったが、そこまで調べる元気がなく結局手作業での修正が発生した&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;記事毎にマークダウンファイルを作るのはできたので、手作業は発生はしたが大幅に移行する時間は短縮できた
+    &lt;ul&gt;
+      &lt;li&gt;自分は20記事くらいだったが、100記事超えるとかなってくるともっと時間短縮が効いてくると思う&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;まとめ&quot;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;現実に起こっている課題を Ruby で解決することができたのがなによりの収穫でした。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><category term="ruby" /><summary type="html">昨日書いたように、はてなブログから jeykll に移行した。 はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。</summary></entry><entry><title type="html">ブログを Jekyll に移行してみた</title><link href="http://localhost:4000/my-forst-jekyll/" rel="alternate" type="text/html" title="ブログを Jekyll に移行してみた" /><published>2021-04-15T20:54:09+09:00</published><updated>2021-04-15T20:54:09+09:00</updated><id>http://localhost:4000/my-forst-jekyll</id><content type="html" xml:base="http://localhost:4000/my-forst-jekyll/">&lt;p&gt;ブログを Jekyll に移行してみた。
 &lt;!-- more --&gt;
 &lt;br /&gt;
 めちゃめちゃ苦戦しました。&lt;/p&gt;
@@ -565,19 +617,4 @@
 
 &lt;p&gt;&lt;img src=&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/a/a_k_s_h/20190331/20190331083824.jpg&quot; alt=&quot;f:id:a_k_s_h:20190331083824j:plain&quot; title=&quot;f:id:a\_k\_s\_h:20190331083824j:plain&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.pakutaso.com/20190959252macbookipad.html&quot;&gt;MacBookとiPadを駆使する猫エンジニアのフリー画像&lt;/a&gt;っていうタイトルの写真だったので今回のテーマとばっちりマッチしていると思いますよ。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">11月1日＆2日でRails Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。</summary></entry><entry><title type="html">一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました</title><link href="http://localhost:4000/I-had-completed-the-course" rel="alternate" type="text/html" title="一ヶ月以上経ったけど大名エンジニアカレッジを修了しておりました" /><published>2019-10-09T00:00:00+09:00</published><updated>2019-10-09T00:00:00+09:00</updated><id>http://localhost:4000/I%20had-completed-the-course.</id><content type="html" xml:base="http://localhost:4000/I-had-completed-the-course">&lt;p&gt;このブログを始めるきっかけになった&lt;a href=&quot;https://daimyo-college.pepabo.com/&quot;&gt;大名エンジニアカレッジ&lt;/a&gt;を2019/09/10に3ヶ月の講習期間を終え、修了しておりました。 色々思うことあり、うまく言葉にまとめられないのでずっと記事にできないでいた。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;生徒のみなさん、講師のみなさん、メンターになっていたたいだエンジニアのみなさん、お疲れ様でした。 非常に楽しい、ためになった3ヶ月でした。&lt;/p&gt;
-
-&lt;p&gt;同期の方のエントリーが素晴らしかったので、それを引用して現時点で言えることのまとめとしたい。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;今回の大名エンジニアカレッジでは&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Ruby&quot;&gt;Ruby&lt;/a&gt; &amp;amp; &lt;a href=&quot;http://d.hatena.ne.jp/keyword/Rails&quot;&gt;Rails&lt;/a&gt; / Git &amp;amp; &lt;a href=&quot;http://d.hatena.ne.jp/keyword/Github&quot;&gt;Github&lt;/a&gt; / フロントエンド / デプロイ etc&lt;a href=&quot;http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B0%A5%E9%A5%DE%A1%BC&quot;&gt;プログラマー&lt;/a&gt;としての気概(HRT+N) / チームでの協業経験　を 微力ではあるが身に付けることができた。&lt;/p&gt;
-
-  &lt;p&gt;つまりそれは、 身近な課題をプログラミングを通して解決する力を少しは身に付けることができたということなのだ。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;iframe src=&quot;https://hatenablog-parts.com/embed?url=https%3A%2F%2Fnote.mu%2Fnot_inertia_life%2Fn%2Fn9914f736393d&quot; title=&quot;23歳、PCを片手に小学校に通った夏(大名エンジニアカレッジ)｜'Y'ONO｜note&quot; class=&quot;embed-card embed-webcard&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;display: block; width: 100%; height: 155px; max-width: 500px; margin: 10px 0px;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;cite class=&quot;hatena-citation&quot;&gt;&lt;a href=&quot;https://note.mu/not_inertia_life/n/n9914f736393d&quot;&gt;note.mu&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">このブログを始めるきっかけになった大名エンジニアカレッジを2019/09/10に3ヶ月の講習期間を終え、修了しておりました。 色々思うことあり、うまく言葉にまとめられないのでずっと記事にできないでいた。</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://www.pakutaso.com/20190959252macbookipad.html&quot;&gt;MacBookとiPadを駆使する猫エンジニアのフリー画像&lt;/a&gt;っていうタイトルの写真だったので今回のテーマとばっちりマッチしていると思いますよ。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">11月1日＆2日でRails Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。</summary></entry></feed>
