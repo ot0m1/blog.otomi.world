@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T22:30:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた</title><link href="http://localhost:4000/created-a-migration-script/" rel="alternate" type="text/html" title="はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた" /><published>2021-04-16T00:00:00+09:00</published><updated>2021-04-16T00:00:00+09:00</updated><id>http://localhost:4000/created-a-migration-script</id><content type="html" xml:base="http://localhost:4000/created-a-migration-script/">&lt;p&gt;&lt;a href=&quot;https://blog.otomi.world/my-forst-jekyll/&quot;&gt;昨日&lt;/a&gt;書いたように、はてなブログから jeykll に移行した。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-27T13:44:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tmp/log</title><subtitle>GMO Pepabo, Inc. フィヨルドブートキャンプ</subtitle><entry><title type="html">フィヨルドブートキャンプのライトニングトーク会で Rack について話した</title><link href="http://localhost:4000/talked-about-rack/" rel="alternate" type="text/html" title="フィヨルドブートキャンプのライトニングトーク会で Rack について話した" /><published>2021-04-27T00:00:00+09:00</published><updated>2021-04-27T00:00:00+09:00</updated><id>http://localhost:4000/talked-about-rack</id><content type="html" xml:base="http://localhost:4000/talked-about-rack/">&lt;p&gt;フィヨルドブートキャンプのライトニングトーク会に先日参加し、Rack について話したのでスライドと学んで得た内容を書く。&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;最初にライトニングトーク会へ参加するというのだけ決めて、テーマは後から考えた。&lt;/p&gt;
+
+&lt;p&gt;Ruby の gem である OmniAuth を使っているときにミドルウェアの概念に出会ったので、よくわかっていないミドルウェアのことを学ぶいい機会だなと思ったので発表テーマに選んで、Rack を触ってみた。&lt;/p&gt;
+
+&lt;h1 id=&quot;発表したスライド&quot;&gt;発表したスライド&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/ot0m1/rack-karajian-rumidoruueafalseshi-jie&quot;&gt;https://speakerdeck.com/ot0m1/rack-karajian-rumidoruueafalseshi-jie&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;発表した内容&quot;&gt;発表した内容&lt;/h1&gt;
+
+&lt;p&gt;Rack から見るミドルウェアの世界というタイトルで、ミドルウェアってどんなものか、Rack とはなんぞや、Rack を触ってみてどうかをお話します。&lt;/p&gt;
+
+&lt;h2 id=&quot;なぜ-rack-を触ろうと思ったか&quot;&gt;なぜ Rack を触ろうと思ったか&lt;/h2&gt;
+
+&lt;p&gt;「omniauth を使って GitHub 認証を実装する」のプラクティスをやっているときに読んだパーフェクト Ruby on Rails に、
+OmniAuthはRackミドルウェアとして動作する、という記述があったためです。&lt;br /&gt;
+ミドルウェアとは？アクセスを受け取るとは？どんな動きをしているのかというところを調べたかったのが動機になります。&lt;/p&gt;
+
+&lt;h2 id=&quot;rack-とは&quot;&gt;Rack とは&lt;/h2&gt;
+
+&lt;p&gt;自分で調べたところ、WEB サーバと WEB アプリケーション／フレームワーク間のインターフェースの役割を果たすライブラリ、とのことでした&lt;/p&gt;
+
+&lt;h2 id=&quot;なぜ-web-サーバと-web-アプリケーションフレームワーク間のインターフェースの役割を果たすライブラリがあるとうれしいのかなぜ-rack-ができたのか&quot;&gt;なぜ WEB サーバと WEB アプリケーション／フレームワーク間のインターフェースの役割を果たすライブラリがあるとうれしいのか、なぜ Rack ができたのか&lt;/h2&gt;
+
+&lt;p&gt;参考にした &lt;a href=&quot;https://gihyo.jp/dev/serial/01/ruby/0023&quot;&gt;URL&lt;/a&gt; に次のような経緯が書かれてありました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WSGI という、Python のための Web サーバと Web アプリケーション/フレームワーク間の標準インターフェースを定める仕様があり、Rack はこの WSGI に影響されて開発された&lt;/li&gt;
+  &lt;li&gt;各フレームワークの実装は特定の Web サーバに依存していることが多く，使用したいフレームワークの為に環境を制限されるということがあったため、WSGI という標準インターフェイスを定める仕様が提唱された&lt;/li&gt;
+  &lt;li&gt;様々な Web サーバやフレームワークが開発されても，双方が Rack を使用してインターフェース部分を実装していさえすれば、サーバとアプリケーションの組み合わせを気にしなくてよくなる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という経緯とうれしい理由があるようです。&lt;/p&gt;
+
+&lt;p&gt;フィヨルドブートキャンプのプラクティスでも出てくる Sinatora や Ruby on Rails でもこの Rack は使われているようです。&lt;/p&gt;
+
+&lt;p&gt;というわけでさっそく触ってみます。&lt;/p&gt;
+
+&lt;p&gt;まずは Rack でアプリケーションを作ってみて、インターフェイスに触れてみます。&lt;br /&gt;
+Rack のアプリケーションとしてはスライドに書かれている最低限 3つのことを満たせばよいそうです。&lt;/p&gt;
+
+&lt;p&gt;はいできました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ot0m1/sibatora&quot;&gt;https://github.com/ot0m1/sibatora&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;GET リクエストでフォームを描画して、POST でフォームに書かれた内容を受け取って表示するというものです。&lt;/p&gt;
+
+&lt;p&gt;shibatora という名称は Sinatra から来ています。&lt;br /&gt;
+当初 Sinatra をモチーフにルーティングができるウェブアプリケーションフレームワークを作ろうとしていたんですが、ミドルウェアの動きを見たいのが今回の目的なので、あんまり複雑なことをやっても本題からずれるなと思って上記のような簡単な挙動のアプリケーションにしました。その時の名残で名前だけ引き継いでいます。&lt;/p&gt;
+
+&lt;p&gt;Rack が色々やってくれるので Web サーバのことを書かなくても、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rackup&lt;/code&gt; すれば自動でサーバを起動して、ブラウザでアクセスできるようにしてくれます。&lt;br /&gt;
+Sinatra や Ruby on Rails を起動させるのと同じ仕様感でした。&lt;/p&gt;
+
+&lt;p&gt;ここで確かに Shinatra や Ruby on Rails も Rack が使われており、アプリケーションはサーバのことを意識しなくてよいということなのかなということを感じました。&lt;/p&gt;
+
+&lt;h2 id=&quot;さらに-rack-でミドルウェア的なものも作ってみる&quot;&gt;さらに Rack でミドルウェア的なものも作ってみる&lt;/h2&gt;
+
+&lt;p&gt;できました。&lt;/p&gt;
+
+&lt;p&gt;冒頭でお話した OmniAuth と同じように、サーバとアプリケーションの中間に入って振る舞ってもらうようなものを作ります。&lt;/p&gt;
+
+&lt;p&gt;というわけで、ウェブアプリケーションフレームじゃないほうの WAF（ウェブアプリケーションファイアウォール）を作ってみました。
+shibatora_waf.rb というファイルを追加しています。さっきのアプリケーションのフォームに URL が書き込まれたら警告文とステータスコード 403 を返すようにようにするというものです。&lt;/p&gt;
+
+&lt;p&gt;サーバーが動いているので &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; がたたけるため、このようにコマンドラインでも確認できます。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-&amp;gt; %  curl http://127.0.0.1:9292/ &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
+HTTP/1.1 200 OK
+Content-Type: text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;charset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;utf-8
+Content-Length: 31
+
+&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;hello&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;%
+
+-&amp;gt; % curl http://127.0.0.1:9292/ &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://example.com'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
+HTTP/1.1 403 Forbidden
+Content-Type: text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;charset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;utf-8
+Content-Length: 68
+
+&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;URLを含む文章は投稿できません&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;%
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;このように、ミドルウェアとして動いていることが確認できます。
+shibatora_waf.rb がミドルウェアとして振る舞ってくれ、サーバとアプリケーションの間の通信に割り込んでいるということがわかります。&lt;/p&gt;
+
+&lt;p&gt;コードを書く側は、アプリケーション層だけを意識しておけばよく、その下の層において Rack がいい感じに HTTP のレスポンスを操作してくれています。&lt;/p&gt;
+
+&lt;p&gt;というわけで冒頭の OmniAuth の振る舞いをなんとなくイメージできました。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><category term="ruby" /><category term="fjord" /><summary type="html">フィヨルドブートキャンプのライトニングトーク会に先日参加し、Rack について話したのでスライドと学んで得た内容を書く。</summary></entry><entry><title type="html">はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた</title><link href="http://localhost:4000/created-a-migration-script/" rel="alternate" type="text/html" title="はてなブログからエクスポートしたファイルを jeykll で読み込めるマークダウンに変換するスクリプト書いた" /><published>2021-04-16T00:00:00+09:00</published><updated>2021-04-16T00:00:00+09:00</updated><id>http://localhost:4000/created-a-migration-script</id><content type="html" xml:base="http://localhost:4000/created-a-migration-script/">&lt;p&gt;&lt;a href=&quot;https://blog.otomi.world/my-forst-jekyll/&quot;&gt;昨日&lt;/a&gt;書いたように、はてなブログから jeykll に移行した。&lt;/p&gt;
 
 &lt;p&gt;はてなブログで書いていた記事を移す際に、ある程度自動化できたのでやったこと書く。&lt;/p&gt;
 
@@ -6,13 +96,13 @@
 
 &lt;p&gt;はてなブログは以下の手順で記事をエクスポートできる。&lt;/p&gt;
 
-&lt;p&gt;https://help.hatenablog.com/entry/export&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://help.hatenablog.com/entry/export&quot;&gt;記事データをエクスポート（バックアップ）する&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;エクスポートされた記事は Movable Type 形式のブログデータらしいのだが、jeykll はそのままだと記事として読み込めないぽいので、各記事毎にファイルを分割するスクリプトを Ruby で書いた。&lt;/p&gt;
 
 &lt;p&gt;コードは GitHub に置いている。&lt;/p&gt;
 
-&lt;p&gt;https://github.com/ot0m1/hatena-blog-to-jekyll&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ot0m1/hatena-blog-to-jekyll&quot;&gt;https://github.com/ot0m1/hatena-blog-to-jekyll&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;1つのテキストファイルを記事毎のマークダウンファイルに分割して、そのまま jeykll の _posts ディレクトリに放り込めるようにした。&lt;/p&gt;
 
@@ -595,26 +685,4 @@
 
 &lt;p&gt;&lt;img src=&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/a/a_k_s_h/20191105/20191105101742.jpg&quot; alt=&quot;f:id:a_k_s_h:20191105101742j:plain&quot; title=&quot;f:id:a\_k\_s\_h:20191105101742j:plain&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;一ヶ月分注文したので、このブログや&lt;a href=&quot;https://twitter.com/ot0m1&quot;&gt;Twitter&lt;/a&gt;で経過報告をしていきたいと思います。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">常々、一人のときの食事ってめんどくさいな〜栄養は取りたいけど買いにいく手間もかけたくないし食費はなるべく抑えたいし、自炊も時間かかるしそんな楽しくないし・・・となんとかハックしたいと思っておりまして、そんなわけでHuelを試してみることにしました。</summary></entry><entry><title type="html">Rails Girls Fukuoka 2ndのコーチをしました</title><link href="http://localhost:4000/I-was-coach-for-Rails-Girls-Fukuoka-2nd/" rel="alternate" type="text/html" title="Rails Girls Fukuoka 2ndのコーチをしました" /><published>2019-11-02T00:00:00+09:00</published><updated>2019-11-02T00:00:00+09:00</updated><id>http://localhost:4000/I-was-coach-for-Rails-Girls-Fukuoka-2nd</id><content type="html" xml:base="http://localhost:4000/I-was-coach-for-Rails-Girls-Fukuoka-2nd/">&lt;p&gt;11月1日＆2日で&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Rails&quot;&gt;Rails&lt;/a&gt; Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;11月1日は参加者のみなさんのPCに開発環境の構築。&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Ruby%20on%20Rails&quot;&gt;Ruby on Rails&lt;/a&gt; のインストールまで。&lt;/p&gt;
-
-&lt;p&gt;11月2日は&lt;a href=&quot;http://railsgirls.jp/&quot;&gt;Rails Girls ガイド&lt;/a&gt;に従って、&lt;a href=&quot;http://d.hatena.ne.jp/keyword/Rails&quot;&gt;Rails&lt;/a&gt; のアプリケーションを新規作成、ガイトに従ってカスタマイズ、&lt;a href=&quot;http://d.hatena.ne.jp/keyword/GitHub&quot;&gt;GitHub&lt;/a&gt;に push 、Heroku にデプロイまでを6時間程度で完了。&lt;/p&gt;
-
-&lt;p&gt;非エンジニアである僕が質問に答えられるのかという思いもありましたが、やりきれた、参加された方に今の自分が伝えられることは全力出せたと自負しています。&lt;/p&gt;
-
-&lt;p&gt;常々、人に説明できないと理解していることにはならないという考えを持っているので、自分がどれだけ理解できているのかを確認できる非常に貴重な機会を得ることができました。&lt;a href=&quot;http://d.hatena.ne.jp/keyword/GitHub&quot;&gt;GitHub&lt;/a&gt; とHeroku までコーチできたのは自分の成長を感じています（Heroku のデプロイについてアドバイスをくれた&lt;a href=&quot;https://twitter.com/mao_sum&quot;&gt;まおちゃ♡&lt;/a&gt;さんありがとうございました！）。&lt;/p&gt;
-
-&lt;p&gt;むしろ僕の方が学ばせてもらったと感じています（ベタ！！！）。得しかしてない！！&lt;/p&gt;
-
-&lt;p&gt;これも主催してくださったみなさんのおかげです。本当にお疲れ様でした&amp;amp;ありがとうございました。&lt;/p&gt;
-
-&lt;p&gt;しかしあれですね、ここまで書いて会場の写真が全然ないので寂しい記事ですね。 僕は写真を撮るという習慣が全くといっていいほどないので、こういうとき載せられる写真がないんです。&lt;/p&gt;
-
-&lt;p&gt;かわいい猫の写真でも載せておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/a/a_k_s_h/20190331/20190331083824.jpg&quot; alt=&quot;f:id:a_k_s_h:20190331083824j:plain&quot; title=&quot;f:id:a\_k\_s\_h:20190331083824j:plain&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.pakutaso.com/20190959252macbookipad.html&quot;&gt;MacBookとiPadを駆使する猫エンジニアのフリー画像&lt;/a&gt;っていうタイトルの写真だったので今回のテーマとばっちりマッチしていると思いますよ。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">11月1日＆2日でRails Girls Fukuoka 2ndがありました。 僕は今回そのコーチに立候補し、参加させてもらうことになりました。</summary></entry></feed>
+&lt;p&gt;一ヶ月分注文したので、このブログや&lt;a href=&quot;https://twitter.com/ot0m1&quot;&gt;Twitter&lt;/a&gt;で経過報告をしていきたいと思います。&lt;/p&gt;</content><author><name>otomi</name></author><category term="blog" /><summary type="html">常々、一人のときの食事ってめんどくさいな〜栄養は取りたいけど買いにいく手間もかけたくないし食費はなるべく抑えたいし、自炊も時間かかるしそんな楽しくないし・・・となんとかハックしたいと思っておりまして、そんなわけでHuelを試してみることにしました。</summary></entry></feed>
